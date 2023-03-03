@@ -4,8 +4,9 @@
         <title>IVIosab</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="src/styles.css">
         <script src="https://kit.fontawesome.com/4aa6d505df.js" crossorigin="anonymous"></script>
+        <script src="dist/bundle.js"></script>
     </head>
     <body>
         <header>
@@ -21,7 +22,7 @@
         <main>
             <section id="intro">
                 <figure>
-                    <img id="my-picture" src="sleepingMosab.png" alt="my picture">
+                    <img id="my-picture" src="src/images/sleepingMosab.png" alt="my picture">
                 </figure>
                 <article id="about">
                     <h2>About Me</h2>
@@ -80,7 +81,7 @@
             <section id="comic">
                 <h2>Here's a comic</h2>
                 <h3 id="comic-title">Title</h3>
-                <img id="comic-img" src="loading.jpg" alt="Loading...">
+                <img id="comic-img" src="src/images/loading.png" alt="Loading...">
                 <h4 id="comic-date">Date</h4>
             </section>
         </main>
@@ -101,45 +102,5 @@
                 </a>
             </div>
         </footer>
-        <script>
-            const comicImg = document.getElementById("comic-img")
-            const comicTitle = document.getElementById("comic-title")
-            const comicDate = document.getElementById("comic-date")
-
-            function getId(){
-                const params = new URLSearchParams()
-                params.append("email", "o.mohamed@innopolis.universtiy")
-                return fetch('https://fwd.innopolis.app/api/hw2?'+params.toString())
-                .then(r => r.json());
-            }
-            
-            function getComic(id){
-                const params = new URLSearchParams()
-                params.append("num", id)
-                return fetch('https://getxkcd.vercel.app/api/comic?'+params.toString())
-                .then(r => r.json());
-            }
-
-            window.addEventListener('load', async function(e){
-                const id = await getId();
-                const comic = await getComic(id)
-                displayComic(comic)
-            })
-
-            async function displayComic(comicObj){
-                const {alt, day, img, link, month, news, num, safe_title, title, transcript, year} = comicObj
-                comicTitle.textContent = title
-                comicImg.alt = alt
-                comicImg.src = img
-                const date = new Date(year.toString()+"-"+month.toString()+"-"+day.toString())
-                const options = {
-                    weekday: 'long',
-                    year: 'numeric', 
-                    month: 'long',
-                    day: 'numeric'
-                }
-                comicDate.textContent = date.toLocaleDateString('en-us', options)
-            }
-        </script>
     </body>
 </html>

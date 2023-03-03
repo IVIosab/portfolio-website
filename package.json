@@ -1,0 +1,32 @@
+{
+  "name": "portfolio-website",
+  "description": "my portfolio website",
+  "version": "0.0.3",
+  "main": "index.ts",
+  "type": "module",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "rollup": "^3.17.2",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup --config rollup.config.js",
+    "watch": "rollup --config rollup.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IVIosab/portfolio-website.git"
+  },
+  "author": "Mosab \"IVIosab\" Mohamed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IVIosab/portfolio-website/issues"
+  },
+  "homepage": "https://github.com/IVIosab/portfolio-website#readme"
+}
