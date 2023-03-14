@@ -38,7 +38,7 @@
     text-decoration: none;
     color: black;
   }
-  
+
   h1 {
     padding-left: 10px;
   }

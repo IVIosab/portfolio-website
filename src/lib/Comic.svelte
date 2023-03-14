@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Comic } from "./comic";
 
-  async function getId() {
+  async function getId(): Promise<number> {
     const params = new URLSearchParams();
     params.append("email", "o.mohamed@innopolis.university");
     const res: Response = await fetch(
@@ -11,7 +11,7 @@
     return id;
   }
 
-  async function getComic(id: number) {
+  async function getComic(id: number): Promise<Comic> {
     const params = new URLSearchParams();
     params.append("num", id.toString());
     const res: Response = await fetch(
@@ -21,23 +21,26 @@
     return object;
   }
 
-  async function retriveComic() {
+  async function retriveComic(): Promise<Comic> {
     const id: number = await getId();
     const comic: Comic = await getComic(id);
     return comic;
   }
 
-  function beautifyDate(year: string, month: string, day: string) {
-    const fullDate = new Date(parseInt(year), (parseInt(month)-1), parseInt(day));
+  function beautifyDate(year: string, month: string, day: string): string {
+    const fullDate = new Date(
+      parseInt(year),
+      parseInt(month) - 1,
+      parseInt(day)
+    );
     const shortDate: string = fullDate.toLocaleDateString("en-us", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-    })
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
     return shortDate;
   }
-  //function for date
 </script>
 
 <section id="comic">
